@@ -97,6 +97,10 @@
     <Compile Include="Migrations\201501060940372_Logviet2015_1.Designer.cs">
       <DependentUpon>201501060940372_Logviet2015_1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501061553222_UpdateBusiness.cs" />
+    <Compile Include="Migrations\201501061553222_UpdateBusiness.Designer.cs">
+      <DependentUpon>201501061553222_UpdateBusiness.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IRepository.cs" />
@@ -133,6 +137,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201501060940372_Logviet2015_1.resx">
       <DependentUpon>201501060940372_Logviet2015_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501061553222_UpdateBusiness.resx">
+      <DependentUpon>201501061553222_UpdateBusiness.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
