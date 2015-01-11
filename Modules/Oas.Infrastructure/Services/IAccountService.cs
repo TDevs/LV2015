@@ -7,7 +7,7 @@ using Oas.Infrastructure.Domain;
 
 namespace Oas.Infrastructure.Services
 {
-    public interface IUserService
+    public interface IAccountService
     {
 
         List<User> Get();

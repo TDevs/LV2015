@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-define(['customersApp/services/routeResolver'], function () {
+define(['services/routeResolver'], function () {
 
     var app = angular.module('logvietApp', ['ngRoute', 'ngAnimate', 'routeResolverServices',
                                               'wc.directives', 'wc.animations', 'ui.bootstrap', 'breeze.angular']);

@@ -124,11 +124,11 @@
     <Compile Include="Services\IMembershipPackage.cs" />
     <Compile Include="Services\IPackageItem.cs" />
     <Compile Include="Services\IBusinessService.cs" />
-    <Compile Include="Services\IUserService.cs" />
+    <Compile Include="Services\IAccountService.cs" />
     <Compile Include="Services\BusinessCategoryService.cs" />
     <Compile Include="Services\MembershipPackageService.cs" />
     <Compile Include="Services\PackageItemService.cs" />
-    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Services\AccountService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -213,16 +213,40 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\animations\listAnimations.js" />
     <Content Include="app\app.js" />
+    <Content Include="app\controllers\aboutController.js" />
+    <Content Include="app\controllers\loginController.js" />
+    <Content Include="app\controllers\navbarController.js" />
+    <Content Include="app\directives\menuHighlighter.js" />
+    <Content Include="app\directives\wcOverlay.js" />
+    <Content Include="app\directives\wcUnique.js" />
+    <Content Include="app\partials\modal.html" />
+    <Content Include="app\services\authService.js" />
+    <Content Include="app\services\config.js" />
+    <Content Include="app\services\dataService.js" />
+    <Content Include="app\services\httpInterceptors.js" />
+    <Content Include="app\services\modalService.js" />
+    <Content Include="app\services\routeResolver.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\animations.css" />
     <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.icon-large.min.css" />
+    <Content Include="Content\images\angularShield.png" />
+    <Content Include="Content\images\appFolders.png" />
+    <Content Include="Content\images\ColorPalette.png" />
+    <Content Include="Content\images\CourseLogoYellow.png" />
+    <Content Include="Content\images\customerApp.png" />
+    <Content Include="Content\images\female.png" />
+    <Content Include="Content\images\male.png" />
+    <Content Include="Content\images\people.png" />
+    <Content Include="Content\images\report.png" />
+    <Content Include="Content\images\spinner.gif" />
+    <Content Include="Content\styles.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
     <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
@@ -242,17 +266,15 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\angular-animate.min.js" />
+    <Content Include="Scripts\angular-route.min.js" />
+    <Content Include="Scripts\angular-ui-bootstrap.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\breeze.angular.js" />
+    <Content Include="Scripts\breeze.min.js" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\require.js" />
+    <Content Include="Scripts\tweenMax.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -261,16 +283,15 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
-    <Content Include="Content\Site.css" />
-    <Content Include="Scripts\_references.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="app\filters\" />
+    <Folder Include="app\views\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
@@ -279,6 +300,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Modules\Oas.Infrastructure\Oas.Infrastructure.csproj">
+      <Project>{2aedde8c-ca12-49a3-96f1-60762ea0c759}</Project>
+      <Name>Oas.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

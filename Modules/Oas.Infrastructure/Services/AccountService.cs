@@ -10,13 +10,13 @@ using Oas.Infrastructure.Domain;
 
 namespace Oas.Infrastructure.Services
 {
-    public class UserService : IUserService
+    public class AccountService : IAccountService
     {
         private readonly IRepository<User> accountRepository;
         private readonly IRepository<Role> roleRepository;
 
 
-        public UserService(IRepository<User> accountRepository, IRepository<Role> roleRepository)
+        public AccountService(IRepository<User> accountRepository, IRepository<Role> roleRepository)
         {
             this.accountRepository = accountRepository;
             this.roleRepository = roleRepository;
