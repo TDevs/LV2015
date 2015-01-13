@@ -69,13 +69,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constant.cs" />
+    <Compile Include="Criteria\Car\CarCriteria.cs" />
+    <Compile Include="Criteria\Criteria.cs" />
     <Compile Include="Criteria\PromotionCriteria.cs" />
     <Compile Include="Criteria\BusinessCriteria.cs" />
     <Compile Include="DatabaseContext.cs" />
     <Compile Include="Domain\Account\MessageHistory.cs" />
     <Compile Include="Domain\Advertisment.cs" />
     <Compile Include="Domain\Business\BusinessLike.cs" />
+    <Compile Include="Domain\Applications\Car\CarModel.cs" />
+    <Compile Include="Domain\Applications\Car\CarCategory.cs" />
+    <Compile Include="Domain\Applications\Car\Car.cs" />
     <Compile Include="Domain\EmailTemplate.cs" />
+    <Compile Include="Domain\OperationStatus.cs" />
     <Compile Include="Domain\PaymentMethod.cs" />
     <Compile Include="Domain\Account\Role.cs" />
     <Compile Include="Domain\Account\Users.cs" />
@@ -129,6 +135,8 @@
     <Compile Include="Services\MembershipPackageService.cs" />
     <Compile Include="Services\PackageItemService.cs" />
     <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Services\CarRenting\ICarRentingService.cs" />
+    <Compile Include="Services\CarRenting\CarRentingService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

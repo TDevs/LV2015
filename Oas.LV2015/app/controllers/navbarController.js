@@ -6,7 +6,7 @@ define(['app'], function (app) {
 
     var NavbarController = function ($scope, $location, config, authService) {
         var vm = this,
-            appTitle = 'Customer Management';
+            appTitle = 'LOGVIET.COM';
 
         vm.isCollapsed = false;
         vm.appTitle = (config.useBreeze) ? appTitle + ' Breeze' : appTitle;

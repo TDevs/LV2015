@@ -63,8 +63,7 @@ namespace Oas.Infrastructure
         {
             try
             {
-                DbSet.Add(entity);
-                Commit();
+                DbSet.Add(entity);              
                 _context.Entry(entity).GetDatabaseValues();
             }
             catch (DbEntityValidationException)
@@ -92,14 +91,6 @@ namespace Oas.Infrastructure
                 var vl = entry.GetValidationResult();
             }
             entry.State = EntityState.Modified;
-            try
-            {
-                Commit();
-            }
-            catch (DbUpdateConcurrencyException ex)
-            {
-                throw ex;
-            }
             return entity;
         }
 
