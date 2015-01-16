@@ -12,11 +12,17 @@ namespace Oas.Infrastructure.Domain
     {
         [Key]
         public Guid Id { get; set; }
-        public Guid BusinessId { get; set; }
+        public Guid? BusinessId { get; set; }
+        public Guid? CarId { get; set; }
+        public Guid? CarItemId { get; set; }
         public string Caption { get; set; }
         public string Url { get; set; }
         public bool IsProfileImage { get; set; }
+
         [ForeignKey("BusinessId")]
-        public virtual Business Business { get; set; }
-    }
-}
+        public Business Business { get; set; }
+        [ForeignKey("CarId")]
+        public Car Car { get; set; }
+        [ForeignKey("CarItemId")]
+        public CarItem CarItem { get; set; }
+    }}

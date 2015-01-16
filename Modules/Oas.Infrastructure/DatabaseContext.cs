@@ -36,6 +36,18 @@ namespace Oas.Infrastructure
         public IDbSet<BusinessLike> BusinessLikes { get; set; }
         public IDbSet<MessageHistory> MessageHitories { get; set; }
 
+        public IDbSet<CarCategory> CarCategories { get; set; }
+
+        public IDbSet<CarModel> CarModels { get; set; }
+
+        public IDbSet<Car> Cars { get; set; }
+
+        public IDbSet<UserApplication> UserApplications { get; set; }
+
+        public IDbSet<Application> Applications { get; set; }
+
+        public IDbSet<CarItem> CarItems { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //Remove unused conventions

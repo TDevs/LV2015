@@ -27,5 +27,7 @@ namespace Oas.Infrastructure.Domain
 
         [ForeignKey("CarModelId")]
         public CarModel CarModel { get; set; }
+        
+        public virtual ICollection<Image> Images { get; set; }
     }
 }

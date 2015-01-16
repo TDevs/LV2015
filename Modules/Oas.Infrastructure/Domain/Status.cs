@@ -9,6 +9,7 @@ namespace Oas.Infrastructure.Domain
     public enum Status
     {
         Pending,
+        Trial,
         Approved,
         Rejected,
         Expired

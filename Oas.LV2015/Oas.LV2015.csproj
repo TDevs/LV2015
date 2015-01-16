@@ -256,6 +256,12 @@
     <Content Include="app\services\httpInterceptors.js" />
     <Content Include="app\services\modalService.js" />
     <Content Include="app\services\routeResolver.js" />
+    <Content Include="app\views\carRenting\carItem.html" />
+    <Content Include="app\views\carRenting\cars.html" />
+    <Content Include="app\views\carRenting\carModels.html" />
+    <Content Include="app\views\carRenting\carModelItem.html" />
+    <Content Include="app\views\carRenting\carCategoryItem.html" />
+    <Content Include="app\views\carRenting\carCategories.html" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\animations.css" />
     <Content Include="Content\bootstrap.css" />
@@ -317,7 +323,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\filters\" />
-    <Folder Include="app\views\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

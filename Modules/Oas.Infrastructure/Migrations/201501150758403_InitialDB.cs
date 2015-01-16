@@ -3,7 +3,7 @@ namespace Oas.Infrastructure.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Logviet2015_1 : DbMigration
+    public partial class InitialDB : DbMigration
     {
         public override void Up()
         {
@@ -22,6 +22,20 @@ namespace Oas.Infrastructure.Migrations
                         TotalClicked = c.Long(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Applications",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        Name = c.String(),
+                        Description = c.String(),
+                        UnitPrice = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        UserApplication_Id = c.Guid(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.UserApplications", t => t.UserApplication_Id)
+                .Index(t => t.UserApplication_Id);
             
             CreateTable(
                 "dbo.BusinessCategories",
@@ -44,26 +58,6 @@ namespace Oas.Infrastructure.Migrations
                         Id = c.Guid(nullable: false),
                         UserId = c.String(maxLength: 128),
                         BusinessCategoryId = c.Guid(nullable: false),
-                        IsAlcohol = c.Boolean(nullable: false),
-                        IsAlcohol_bar = c.Boolean(nullable: false),
-                        IsAlcohol_beer_wine = c.Boolean(nullable: false),
-                        Attire = c.String(),
-                        Country = c.String(),
-                        Locality = c.String(),
-                        Meal_breakfast = c.Boolean(nullable: false),
-                        Meal_cater = c.Boolean(nullable: false),
-                        Meal_deliver = c.Boolean(nullable: false),
-                        Meal_takeout = c.Boolean(nullable: false),
-                        Open_24hrs = c.Boolean(nullable: false),
-                        Options_healthy = c.Boolean(nullable: false),
-                        Options_vegetarian = c.Boolean(nullable: false),
-                        Payment_cashonly = c.Boolean(nullable: false),
-                        Postcode = c.String(),
-                        Price = c.Int(nullable: false),
-                        Rating = c.Int(nullable: false),
-                        Region = c.String(),
-                        Wifi = c.Boolean(nullable: false),
-                        IsClosed = c.Boolean(nullable: false),
                         UpdatedDate = c.Boolean(nullable: false),
                         Zipcode = c.String(),
                         Name = c.String(),
@@ -225,13 +219,73 @@ namespace Oas.Infrastructure.Migrations
                 c => new
                     {
                         Id = c.Guid(nullable: false),
-                        BusinessId = c.Guid(nullable: false),
+                        BusinessId = c.Guid(),
+                        CarId = c.Guid(),
+                        CarItemId = c.Guid(),
                         Caption = c.String(),
                         Url = c.String(),
                         IsProfileImage = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Businesses", t => t.BusinessId)
+                .ForeignKey("dbo.Cars", t => t.CarId)
+                .ForeignKey("dbo.CarItems", t => t.CarItemId)
+                .Index(t => t.BusinessId)
+                .Index(t => t.CarId)
+                .Index(t => t.CarItemId);
+            
+            CreateTable(
+                "dbo.Cars",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        CarModelId = c.Guid(nullable: false),
+                        Name = c.String(),
+                        Year = c.String(),
+                        Description = c.String(),
+                        IsMT = c.Boolean(nullable: false),
+                        IsAT = c.Boolean(nullable: false),
+                        TotalOfSeating = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.CarModels", t => t.CarModelId)
+                .Index(t => t.CarModelId);
+            
+            CreateTable(
+                "dbo.CarModels",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        CarCategoryId = c.Guid(nullable: false),
+                        Name = c.String(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.CarCategories", t => t.CarCategoryId)
+                .Index(t => t.CarCategoryId);
+            
+            CreateTable(
+                "dbo.CarCategories",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        Name = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.CarItems",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        CarId = c.Guid(nullable: false),
+                        BusinessId = c.Guid(nullable: false),
+                        UnitPrice = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Description = c.String(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Businesses", t => t.BusinessId)
+                .ForeignKey("dbo.Cars", t => t.CarId)
+                .Index(t => t.CarId)
                 .Index(t => t.BusinessId);
             
             CreateTable(
@@ -320,6 +374,21 @@ namespace Oas.Infrastructure.Migrations
                     })
                 .PrimaryKey(t => t.Id);
             
+            CreateTable(
+                "dbo.UserApplications",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        UserId = c.String(),
+                        ApplicationId = c.Guid(nullable: false),
+                        Price = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Status = c.Int(nullable: false),
+                        CreatedDate = c.DateTime(nullable: false),
+                        CreateBy = c.String(),
+                        ExpireDate = c.DateTime(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
         }
         
         public override void Down()
@@ -327,11 +396,18 @@ namespace Oas.Infrastructure.Migrations
             DropForeignKey("dbo.UserRoles", "IdentityUser_Id", "dbo.Users");
             DropForeignKey("dbo.AspNetUserLogins", "IdentityUser_Id", "dbo.Users");
             DropForeignKey("dbo.AspNetUserClaims", "IdentityUser_Id", "dbo.Users");
+            DropForeignKey("dbo.Applications", "UserApplication_Id", "dbo.UserApplications");
             DropForeignKey("dbo.UserRoles", "RoleId", "dbo.Roles");
             DropForeignKey("dbo.PackageItems", "MembershipPackageId", "dbo.MembershipPackages");
             DropForeignKey("dbo.BusinessPromotions", "BusinessId", "dbo.Businesses");
             DropForeignKey("dbo.BusinessLikes", "UserId", "dbo.Users");
             DropForeignKey("dbo.BusinessLikes", "BusinessId", "dbo.Businesses");
+            DropForeignKey("dbo.Images", "CarItemId", "dbo.CarItems");
+            DropForeignKey("dbo.CarItems", "CarId", "dbo.Cars");
+            DropForeignKey("dbo.CarItems", "BusinessId", "dbo.Businesses");
+            DropForeignKey("dbo.Images", "CarId", "dbo.Cars");
+            DropForeignKey("dbo.Cars", "CarModelId", "dbo.CarModels");
+            DropForeignKey("dbo.CarModels", "CarCategoryId", "dbo.CarCategories");
             DropForeignKey("dbo.Images", "BusinessId", "dbo.Businesses");
             DropForeignKey("dbo.MessageHistories", "User_Id", "dbo.Users");
             DropForeignKey("dbo.MessageHistories", "ToUserId", "dbo.Users");
@@ -347,6 +423,12 @@ namespace Oas.Infrastructure.Migrations
             DropIndex("dbo.BusinessPromotions", new[] { "BusinessId" });
             DropIndex("dbo.BusinessLikes", new[] { "BusinessId" });
             DropIndex("dbo.BusinessLikes", new[] { "UserId" });
+            DropIndex("dbo.CarItems", new[] { "BusinessId" });
+            DropIndex("dbo.CarItems", new[] { "CarId" });
+            DropIndex("dbo.CarModels", new[] { "CarCategoryId" });
+            DropIndex("dbo.Cars", new[] { "CarModelId" });
+            DropIndex("dbo.Images", new[] { "CarItemId" });
+            DropIndex("dbo.Images", new[] { "CarId" });
             DropIndex("dbo.Images", new[] { "BusinessId" });
             DropIndex("dbo.UserRoles", new[] { "IdentityUser_Id" });
             DropIndex("dbo.UserRoles", new[] { "RoleId" });
@@ -362,12 +444,18 @@ namespace Oas.Infrastructure.Migrations
             DropIndex("dbo.Businesses", new[] { "BusinessCategoryId" });
             DropIndex("dbo.Businesses", new[] { "UserId" });
             DropIndex("dbo.BusinessCategories", new[] { "ParentId" });
+            DropIndex("dbo.Applications", new[] { "UserApplication_Id" });
+            DropTable("dbo.UserApplications");
             DropTable("dbo.Settings");
             DropTable("dbo.Roles");
             DropTable("dbo.PackageItems");
             DropTable("dbo.EmailTemplates");
             DropTable("dbo.BusinessPromotions");
             DropTable("dbo.BusinessLikes");
+            DropTable("dbo.CarItems");
+            DropTable("dbo.CarCategories");
+            DropTable("dbo.CarModels");
+            DropTable("dbo.Cars");
             DropTable("dbo.Images");
             DropTable("dbo.UserRoles");
             DropTable("dbo.MessageHistories");
@@ -378,6 +466,7 @@ namespace Oas.Infrastructure.Migrations
             DropTable("dbo.BusinessComments");
             DropTable("dbo.Businesses");
             DropTable("dbo.BusinessCategories");
+            DropTable("dbo.Applications");
             DropTable("dbo.Advertisments");
         }
     }

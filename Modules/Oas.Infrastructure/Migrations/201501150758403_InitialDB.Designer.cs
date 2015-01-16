@@ -7,13 +7,13 @@ namespace Oas.Infrastructure.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.2-31219")]
-    public sealed partial class UpdateBusiness : IMigrationMetadata
+    public sealed partial class InitialDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdateBusiness));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "201501061553222_UpdateBusiness"; }
+            get { return "201501150758403_InitialDB"; }
         }
         
         string IMigrationMetadata.Source
