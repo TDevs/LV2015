@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Oas.Infrastructure.Domain;
-using Oas.Infrastructure.Domain.Account; 
+using Oas.Infrastructure.Domain.Account;
 
 namespace Oas.Infrastructure
 {
@@ -29,12 +29,14 @@ namespace Oas.Infrastructure
 
         public IDbSet<Image> Images { get; set; }
         public IDbSet<Setting> Settings { get; set; }
-        
+
         public IDbSet<Advertisment> Advertisments { get; set; }
         public IDbSet<EmailTemplate> EmailTemplates { get; set; }
 
         public IDbSet<BusinessLike> BusinessLikes { get; set; }
         public IDbSet<MessageHistory> MessageHitories { get; set; }
+
+        #region car renting manage
 
         public IDbSet<CarCategory> CarCategories { get; set; }
 
@@ -47,6 +49,14 @@ namespace Oas.Infrastructure
         public IDbSet<Application> Applications { get; set; }
 
         public IDbSet<CarItem> CarItems { get; set; }
+
+        #endregion
+
+        #region Ecenter management
+
+        public IDbSet<Student> Students { get; set; }
+
+        #endregion
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
